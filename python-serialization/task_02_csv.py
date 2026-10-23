@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import csv
+import json
+
+def convert_csv_to_json(csv_file):
+    try:
+        with open(csv_file, 'r') as csvfile:
+            reader = csv.DictReader(csvfile)
+            data = list(reader)
+
+        with open(json_file, 'w') as jsonfile:
+            json.dump(data, jsonfile, indent=4)
+    except (OSError, csv.Error, json.JSONDecodeError):
+        return None
